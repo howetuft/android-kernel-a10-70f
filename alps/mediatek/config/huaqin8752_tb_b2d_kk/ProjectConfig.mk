@@ -1426,7 +1426,8 @@ USE_OPENGL_RENDERER=true
 WIFI_WEP_KEY_ID_SET=no
 
 # Define which modem will be used.
-CUSTOM_MODEM=huaqin8752_tb_b2d_kk_md1[lwg] huaqin8752_tb_b2d_kk_md1[lttg]
+#CUSTOM_MODEM=huaqin8752_tb_b2d_kk_md1[lwg] huaqin8752_tb_b2d_kk_md1[lttg]
+CUSTOM_MODEM=
 
 # Set the option to Yes to force to send SCRI message during the screen is on if the network doesn't support R8 Fast Dormancy.
 MTK_FD_FORCE_REL_SUPPORT=no
