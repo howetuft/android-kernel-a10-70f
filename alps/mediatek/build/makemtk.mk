@@ -140,16 +140,16 @@ ifeq (MT6573, $(MTK_PLATFORM))
   endif
 endif
 
-SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter.txt
-ifeq ($(strip $(MTK_EMMC_SUPPORT)),yes)
-  SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter_emmc.txt
-endif
-ifeq ($(strip $(MTK_YAML_SCATTER_FILE_SUPPORT)),yes)
-  SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter.txt
-endif
+#SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter.txt
+#ifeq ($(strip $(MTK_EMMC_SUPPORT)),yes)
+  #SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter_emmc.txt
+#endif
+#ifeq ($(strip $(MTK_YAML_SCATTER_FILE_SUPPORT)),yes)
+  #SCATTER_FILE := $(OUT_DIR)/target/product/$(PROJECT)/$(MTK_PLATFORM)_Android_scatter.txt
+#endif
 
-#wschen
-OTA_SCATTER_FILE := $(MTK_ROOT_SOURCE)/misc/ota_scatter.txt
+##wschen
+#OTA_SCATTER_FILE := $(MTK_ROOT_SOURCE)/misc/ota_scatter.txt
 
 export TARGET_PRODUCT=$(PROJECT)
 export FLAVOR=$(FLAVOR)
@@ -690,16 +690,16 @@ dump-memusage:
                 $(SHOWRSLT) $${PIPESTATUS[0]} $(LOG)$@.log
 
 
-ifneq ($(MTK_DEPENDENCY_AUTO_CHECK), true)
-.PHONY: $(OTA_SCATTER_FILE)
-endif
-OTA_SCATTER_GENERATOR := $(MTK_ROOT_BUILD)/tools/ptgen/ota_scatter.pl
-$(OTA_SCATTER_FILE): $(SCATTER_FILE) $(OTA_SCATTER_GENERATOR)
-ifeq ($(MTK_DEPENDENCY_AUTO_CHECK), true)
-	-@echo [Update] $@: $?
-endif
-	$(hide) mkdir -p $(dir $@)
-	$(hide) perl $(OTA_SCATTER_GENERATOR) $< $@
+#ifneq ($(MTK_DEPENDENCY_AUTO_CHECK), true)
+#.PHONY: $(OTA_SCATTER_FILE)
+#endif
+#OTA_SCATTER_GENERATOR := $(MTK_ROOT_BUILD)/tools/ptgen/ota_scatter.pl
+#$(OTA_SCATTER_FILE): $(SCATTER_FILE) $(OTA_SCATTER_GENERATOR)
+#ifeq ($(MTK_DEPENDENCY_AUTO_CHECK), true)
+	#-@echo [Update] $@: $?
+#endif
+	#$(hide) mkdir -p $(dir $@)
+	#$(hide) perl $(OTA_SCATTER_GENERATOR) $< $@
 
 
 gen-relkey: PRIVATE_KEY_GENERATOR := development/tools/make_key
