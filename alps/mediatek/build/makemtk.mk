@@ -60,12 +60,13 @@ S_LOG =  $(OUT_DIR)/target/product/$(PROJECT)_
 LOG   =  $(LOGDIR)/$(PROJECT)_
 CUSTOM_MEMORY_HDR = mediatek/custom/$(PROJECT)/preloader/inc/custom_MemoryDevice.h
 
+BASE_WD       := $(shell pwd)
 USERID        =  $(shell whoami)
 PRELOADER_WD  =  mediatek/preloader
 TRUST_TEE_WD  =  mediatek/trustzone
 LK_WD         =  bootable/bootloader/lk
 MD32_WD       =  md32/md32
-KERNEL_WD     =  kernel
+KERNEL_WD     =  $(BASE_WD)/kernel
 ANDROID_WD    =  .
 ALL_MODULES   =
 MAKE_DEBUG    =  --no-print-directory
