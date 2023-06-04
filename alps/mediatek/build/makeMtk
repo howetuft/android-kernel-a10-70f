@@ -407,7 +407,7 @@ if (join(' ', @acts) =~ /($actPttn)/ || $project eq "banyan_addon" || $project e
 
 $cmdArg = "CMD_ARGU=\"@mOpts\"";
 $makeCmd = "make -f mediatek/build/makemtk.mk $cmdArg @mOpts";
-#print "$makeCmd\n";
+print "$makeCmd\n";
 
 $result = 0;
 
