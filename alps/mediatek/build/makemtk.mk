@@ -69,7 +69,7 @@ KERNEL_WD     =  kernel
 ANDROID_WD    =  .
 ALL_MODULES   =
 MAKE_DEBUG    =  --no-print-directory
-hide         := @ 
+hide         :=  
 CMD_ARGU2    :=  $(filter-out -j%, $(CMD_ARGU))
 REMAKECMD    :=  make -f$(MTK_ROOT_BUILD)/makemtk.mk CMD_ARGU=$(CMD_ARGU) $(CMD_ARGU2) $(MAKE_DEBUG)
 CPUCORES     :=  $(shell cat /proc/cpuinfo | grep processor | wc -l)
