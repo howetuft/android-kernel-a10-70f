@@ -374,6 +374,7 @@ int __kprobes kprobe_exceptions_notify(struct notifier_block *self,
  * for kretprobe handlers which should normally be interested in r0 only
  * anyway.
  */
+
 void __naked __kprobes kretprobe_trampoline(void)
 {
 	__asm__ __volatile__ (
@@ -391,7 +392,7 @@ void __naked __kprobes kretprobe_trampoline(void)
 }
 
 /* Called from kretprobe_trampoline */
-static __used __kprobes void *trampoline_handler(struct pt_regs *regs)
+__used __kprobes void *trampoline_handler(struct pt_regs *regs)
 {
 	struct kretprobe_instance *ri = NULL;
 	struct hlist_head *head, empty_rp;
