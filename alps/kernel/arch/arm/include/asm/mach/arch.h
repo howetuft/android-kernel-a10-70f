@@ -9,7 +9,6 @@
  */
 
 #ifndef __ASSEMBLY__
-
 struct tag;
 struct meminfo;
 struct pt_regs;
@@ -84,7 +83,7 @@ static const struct machine_desc __mach_desc_##_type	\
 
 #define DT_MACHINE_START(_name, _namestr)		\
 static const struct machine_desc __mach_desc_##_name	\
- __used							\
+ __attribute((used))					\
  __attribute__((__section__(".arch.info.init"))) = {	\
 	.nr		= ~0,				\
 	.name		= _namestr,
