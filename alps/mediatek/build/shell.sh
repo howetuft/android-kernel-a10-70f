@@ -16,7 +16,7 @@ fi
 
 
 # export variables to shell environments
-eval `TARGET_PRODUCT=${TARGET_PRODUCT} _prefix_=$1 _postfix_=$2 make --no-print-directory -i -f $1/mediatek/build/libs/shell.mk`
+eval `TARGET_PRODUCT=${TARGET_PRODUCT} _prefix_=$1 _postfix_=$2 make --debug=n --no-print-directory -i -f $1/mediatek/build/libs/shell.mk`
 
 # for legacy "Download folder". Will be removed once nobody use it.
 function make_legacy_download_folder() {
