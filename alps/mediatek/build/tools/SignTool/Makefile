@@ -39,13 +39,13 @@ endif
 
 
 SignTool: $(OBJ_DIR)/main.o $(SEC_WRAPPER_IMPL) $(SECURE_LIB) $(COMMON_LIB)
-	gcc -m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 $(OBJ_DIR)/main.o $(SEC_WRAPPER_IMPL) $(SECURE_LIB) $(COMMON_LIB) -o $(OUTPUT_BIN)
+	$(HOST)gcc -m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 $(OBJ_DIR)/main.o $(SEC_WRAPPER_IMPL) $(SECURE_LIB) $(COMMON_LIB) -o $(OUTPUT_BIN)
 	@echo [Dependency] $(CURDIR)/$(SECURE_LIB)
 	@if [ -f $(OUTPUT_LINK) ]; then rm $(OUTPUT_LINK); fi
 	ln -s $(OUTPUT_BIN) $(OUTPUT_LINK)
 
 $(OBJ_DIR)/main.o: core/main.c
-	gcc -MD -MF dep/main.dep -m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -c core/main.c -o $(OBJ_DIR)/main.o $(CFLAGS)
+	$(HOST)gcc -MD -MF dep/main.dep -m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -c core/main.c -o $(OBJ_DIR)/main.o $(CFLAGS)
 
 build_info:
 	@echo //building time information > inc/build_info.h

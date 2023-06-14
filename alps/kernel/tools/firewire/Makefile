@@ -1,7 +1,7 @@
 prefix = /usr
 nosy-dump-version = 0.4
 
-CC = gcc
+CC ?= $(HOST)gcc
 
 all : nosy-dump
 

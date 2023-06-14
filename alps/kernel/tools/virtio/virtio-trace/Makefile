@@ -1,4 +1,4 @@
-CC = gcc
+CC ?= $(HOST)gcc
 CFLAGS = -O2 -Wall -pthread
 
 all: trace-agent

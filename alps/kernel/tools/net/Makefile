@@ -1,6 +1,6 @@
 prefix = /usr
 
-CC = gcc
+CC ?= $(HOST)gcc
 
 all : bpf_jit_disasm
 

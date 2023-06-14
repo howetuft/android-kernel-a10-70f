@@ -78,7 +78,7 @@ ifeq ($(MTK_DEPENDENCY_AUTO_CHECK), true)
 	-@echo [Update] $$@: $$?
 endif
 	@mkdir -p $$(dir $(2))
-	$(hide) gcc $(3) -E $(1) -o $(2) -MD -MF $$(basename $(2)).d $(4)
+	$(hide) $(HOST)gcc $(3) -E $(1) -o $(2) -MD -MF $$(basename $(2)).d $(4)
 	$(hide) perl $$(MTK_DEPENDENCY_SCRIPT) $$(MTK_DEPENDENCY_OUTPUT)/$$(basename $$(notdir $(1))).dep $$@ $$(dir $$@) "\b$$(basename $$(notdir $$@))\.d"
 	$(hide) rm $$(basename $(2)).d
 endef
