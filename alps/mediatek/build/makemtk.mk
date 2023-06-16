@@ -74,7 +74,7 @@ hide         :=
 CMD_ARGU2    :=  $(filter-out -j%, $(CMD_ARGU))
 REMAKECMD    :=  make -f$(MTK_ROOT_BUILD)/makemtk.mk CMD_ARGU=$(CMD_ARGU) $(CMD_ARGU2) $(MAKE_DEBUG)
 CPUCORES     :=  $(shell cat /proc/cpuinfo | grep processor | wc -l)
-MAKEJOBS     :=  -j1
+MAKEJOBS     :=  -j$(CPUCORES)
 MAKEJOBS_MD32     :=  -j2
 makemtk_temp := $(shell mkdir -p $(LOGDIR))
 
