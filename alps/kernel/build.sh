@@ -5,7 +5,7 @@ curcfg=".config"
 release="n"
 rebuild="n"
 clean="n"
-makeflags="-w"
+makeflags="-w -j1"
 makedefs="V=0"
 makejobs=${MAKEJOBS}
 curdir=`pwd`
@@ -80,9 +80,9 @@ if [ "${clean}" == "y" ]; then
    if [ ! -z $KMOD_PATH ]; then
       echo "Clean kernel module PROJECT=$MTK_PROJECT PATH=$KMOD_PATH";
       if [ "${KBUILD_OUTPUT_SUPPORT}" == "yes" ]; then
-        make M="$KMOD_PATH" O=$outdir clean
+        make -j1 M="$KMOD_PATH" O=$outdir clean
       else
-        make M="$KMOD_PATH" clean
+        make -j1 M="$KMOD_PATH" clean
       fi
       exit $?
    else
@@ -91,7 +91,7 @@ if [ "${clean}" == "y" ]; then
 fi
 
 if [ "${mrproper}" == "y" ]; then
-  make mrproper; exit $?;
+  make -j1 mrproper; exit $?;
 fi
 
 if [ "${rebuild}" == "y" ]; then make_clean; fi
@@ -99,9 +99,9 @@ if [ "${rebuild}" == "y" ]; then make_clean; fi
 echo "**** Configuring / $defcfg / ****"
 # select correct configuration file
 if [ "${KBUILD_OUTPUT_SUPPORT}" == "yes" ]; then
-  make mediatek-configs O=$outdir
+  make -j1 mediatek-configs O=$outdir
 else
-  make mediatek-configs
+  make -j1 mediatek-configs
 fi
 
 # Config DRAM size according to central Project Configuration file setting
@@ -158,9 +158,9 @@ nice make ${makeflags} ${makedefs} silentoldconfig
 if [ ! -z $KMOD_PATH ]; then
   echo "Build kernel module PROJECT=$MTK_PROJECT PATH=$KMOD_PATH";
   if [ "${KBUILD_OUTPUT_SUPPORT}" == "yes" ]; then
-    make M="$KMOD_PATH" O=$outdir modules
+    make -j1 M="$KMOD_PATH" O=$outdir modules
   else
-    make M="$KMOD_PATH" modules
+    make -j1 M="$KMOD_PATH" modules
   fi
   exit $?
 fi
