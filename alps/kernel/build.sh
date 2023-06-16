@@ -24,7 +24,7 @@ usage() {
 
 make_clean() {
   echo "**** Cleaning (fake) ****"
-  #  nice make ${makeflags} ${makedefs} distclean
+  nice make ${makeflags} ${makedefs} distclean
 }
 
 
