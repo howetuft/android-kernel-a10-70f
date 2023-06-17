@@ -6,7 +6,7 @@ release="n"
 rebuild="n"
 clean="n"
 makeflags="-w"
-makedefs="V=0"
+makedefs="V=1"
 makejobs=${MAKEJOBS}
 curdir=`pwd`
 if [ "${KBUILD_OUTPUT_SUPPORT}" == "yes" ];then
@@ -23,7 +23,8 @@ usage() {
 }
 
 make_clean() {
-  echo "**** Cleaning (fake) ****"
+  echo "**** Cleaning ****"
+  echo "nice make ${makeflags} ${makedefs} distclean"
   nice make ${makeflags} ${makedefs} distclean
 }
 
