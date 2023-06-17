@@ -196,19 +196,13 @@ else
   fi
 fi
 
-echo "**** KERNEL IMAGES ****"
-echo "kernel_img: ${kernel_img}"
-echo "kernel_zimg: ${kernel_zimg}"
-
 echo "**** Generate download images ****"
 
 if [ ! -x ${mkimg} ]; then chmod a+x ${mkimg}; fi
 
 if [ "${KBUILD_OUTPUT_SUPPORT}" == "yes" ]; then
-  echo "${mkimg} ${kernel_zimg} KERNEL > $outdir/kernel_${MTK_PROJECT}.bin"
   ${mkimg} ${kernel_zimg} KERNEL > $outdir/kernel_${MTK_PROJECT}.bin
 else
-  echo "${mkimg} ${kernel_zimg} KERNEL > kernel_${MTK_PROJECT}.bin"
   ${mkimg} ${kernel_zimg} KERNEL > kernel_${MTK_PROJECT}.bin
 fi
 
